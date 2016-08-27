@@ -1,0 +1,76 @@
+#gameTitle {
+  border: 2px solid black;
+}
+
+#selectSwimmerControls {
+  border: 2px solid black;
+}
+
+#selectSwimmerTitle {
+  border: 2px solid black;
+}
+
+.selectSwimmer {
+  display: inline-block;
+  border: 2px solid black;
+}
+
+#boardControls {
+  border: 2px solid black;
+  height: 72px;
+}
+
+#gameMessage {
+  border: 2px solid black;
+}
+
+#swimmerScoreBoard {
+  border: 2px solid black;
+}
+
+.swimmerNames {
+  border: 2px solid black;
+}
+
+.swimmerScores {
+  border: 2px solid black;
+}
+
+.swimmerControlKey {
+  border: 2px solid black;
+}
+
+#gameStartControls {
+  border: 2px solid black;
+}
+
+.startControls {
+  border: 2px solid black;
+}
+
+#raceBoard {
+  border: 2px solid black;
+  height: 350px;
+}
+
+#swimmer1 {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  border: 2px solid black;
+  visibility: hidden;
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+#swimmer2 {
+  height: 100px;
+  width: 100px;
+  background-color: blue;
+  border: 2px solid black;
+  visibility: hidden;
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 100px;
+}
