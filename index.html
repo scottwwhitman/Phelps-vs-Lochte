@@ -19,7 +19,7 @@
 
     <!-- Custom JS -->
     <script src="js/app.js"></script>
-
+    <script src="js/data.js"></script>
 
     <title>Phelps vs. Lochte</title>
   </head>
@@ -42,45 +42,34 @@
               <p>Select your swimmer</p>
             </div>
           </div>
-          <!-- Select swimmer options -->
-          <div class="row">
-            <div class="col-md-2 selectSwimmer" id="selectSwimmer1">
-              <p>Swimmer 1</p>
-            </div>
-            <div class="col-md-2 selectSwimmer" id="selectSwimmer2">
-              <p>Swimmer 2</p>
-            </div>
-            <div class="col-md-2 selectSwimmer" id="selectSwimmer3">
-              <p>Swimmer 3</p>
-            </div>
-            <div class="col-md-2 selectSwimmer" id="selectSwimmer4">
-              <p>Swimmer 4</p>
-            </div>
-            <div class="col-md-2 selectSwimmer" id="selectSwimmer5">
-              <p>Swimmer 5</p>
-            </div>
-            <div class="col-md-2 selectSwimmer" id="selectSwimmer6">
-              <p>Swimmer 6</p>
-            </div>
+          <!-- Utilizes Handlebars to creates the swimmer list for selecting each player's swimmer -->
+          <div class="row" id="swimmer-List">
+            <script id="swimmer-List-Template" type="text/x-handlebars-template">
+              {{#each swimmers}}
+                <div class="col-md-2 selectSwimmer" id="{{swimmer_id}}">
+                  <p>{{swimmer_lastName}}</p>
+                </div>
+              {{/each}}
+            </script>
           </div>
         </div>
         <!-- Reset and race again controls -->
         <div class="col-md-4" id="boardControls">
           <div class="row">
             <div class="col-md-6">
-              <button type="button" class="btn btn-primary center-block">Race again</button>
+              <button type="button" class="btn btn-primary center-block" id="raceAgain">Race again</button>
             </div>
             <div class="col-md-6">
-              <button type="button" class="btn btn-primary center-block">Reset</button>
+              <button type="button" class="btn btn-primary center-block" id="reset">Reset</button>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Contains the game message board -->
-      <div class="row" id="gameMessage">
-        <div class="col-md-12">
-          <p>Message board</p>
+      <div class="row">
+        <div class="col-md-12" id="gameMessageBox">
+          <p id="gameMessage"></p>
         </div>
       </div>
 
@@ -89,7 +78,7 @@
           <div class="col-md-4" id="gameStartControls">
             <div class="row">
               <div class="col-md-12 startControls" id="gameStart">
-                <button type="button" class="btn btn-primary center-block" id="setGame">Set game</button>
+                <button type="button" class="btn btn-primary center-block" id="startGame">Start game</button>
               </div>
               <div class="col-md-12 startControls" id="gameOnYourMarks">
                 <p>On your marks...</p>
@@ -106,17 +95,17 @@
           <div class="col-md-8" id="swimmerScoreBoard">
               <!-- Player names and score -->
               <div class="row">
-                <div class="col-md-5 swimmerNames" id="swimmer1Name">
-                  <p>Swimmer 1</p>
+                <div class="col-md-5 swimmerNames">
+                  <p id="player1Name"></p>
                 </div>
-                <div class="col-md-1 swimmerScores" id="swimmer1Score">
-                  <p>0</p>
+                <div class="col-md-1 swimmerScores">
+                  <p id="player1Score"></p>
                 </div>
-                <div class="col-md-5 swimmerNames" id="swimmer2Name">
-                  <p>Swimmer 2</p>
+                <div class="col-md-5 swimmerNames">
+                  <p id="player2Name"></p>
                 </div>
-                <div class="col-md-1 swimmerScores" id="swimmer2Score">
-                  <p>0</p>
+                <div class="col-md-1 swimmerScores">
+                  <p id="player2Score"></p>
                 </div>
               </div>
               <!-- Player control keys -->
@@ -134,8 +123,9 @@
       <!-- Contains the race board -->
       <div class="row">
         <div class="col-md-12" id="raceBoard">
-          <div id="swimmer1">Swimmer1</div>
-          <div id="swimmer2">Swimmer2</div>
+          <div id="swimmerOne"></div>
+          <div id="swimmerTwo">Swimmer2</div>
+          <img src="assets/pool.jpg" id="poolImage">
         </div>
       </div>
 

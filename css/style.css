@@ -20,7 +20,7 @@
   height: 72px;
 }
 
-#gameMessage {
+#gameMessageBox {
   border: 2px solid black;
 }
 
@@ -53,24 +53,28 @@
   height: 350px;
 }
 
-#swimmer1 {
+#poolImage {
+  width: 925px;
+}
+
+#swimmerOne {
   height: 100px;
   width: 100px;
   background-color: red;
   border: 2px solid black;
   visibility: hidden;
   position: absolute;
-  margin-top: 50px;
-  margin-left: 100px;
+  margin-top: 30px;
+  margin-left: 50px;
 }
 
-#swimmer2 {
+#swimmerTwo {
   height: 100px;
   width: 100px;
   background-color: blue;
   border: 2px solid black;
   visibility: hidden;
   position: absolute;
-  margin-top: 200px;
-  margin-left: 100px;
+  margin-top: 180px;
+  margin-left: 50px;
 }
