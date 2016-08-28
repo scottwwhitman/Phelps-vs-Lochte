@@ -9,23 +9,39 @@ $(document).on("ready", function() {
   var player2SelectMessage = "Player 2 select your swimmer"
   var player1StartName = "Player 1"
   var player2StartName = "Player 2"
-  var player1StartScore = 0
-  var player2StartScore = 0
-  // var swimmer1 = null
-  // var swimmer2 = null
+  var player1Score = 0
+  var player2Score = 0
+  var swimmer1 = null
+  var swimmer2 = null
   var swimmerSelector = 1
 
+  setSwimmers();
+  // runs Handlebars function to create swimmer list
+  function setSwimmers() {
+    var source = $('#swimmer-List-Template').html();
+    var swimmerTemplate = Handlebars.compile(source);
+    var swimmerHtml = swimmerTemplate({swimmers: swimmerData.swimmers});
+    $("#swimmer-List").append(swimmerHtml);
+  }
 
   setBoard();
 
 // Function Definitions
 
   $("#reset").on("click", function () {
+    player1Score = 0
+    player2Score = 0
+    swimmer1 = null
+    swimmer2 = null
+    swimmerSelector = 1
+    $("#swimmerOne").css("visibility", "hidden");
+    $("#swimmerOne").css("margin-left", 50);
+    $("#swimmerTwo").css("visibility", "hidden");
+    $("#swimmerTwo").css("margin-left", 50);
     setBoard();
   });
 
   function setBoard() {
-    var swimmerSelector = 1
 
     // Sets initial game message
     $("#gameMessage").text(player1SelectMessage);
@@ -34,17 +50,15 @@ $(document).on("ready", function() {
 
     $("#player2Name").text(player2StartName);
 
-    $("#player1Score").text(player1StartScore);
+    $("#player1Score").text(player1Score);
 
-    $("#player2Score").text(player2StartScore);
+    $("#player2Score").text(player2Score);
 
     // runs Handlebars function to create swimmer list
-    var source = $('#swimmer-List-Template').html();
-    var swimmerTemplate = Handlebars.compile(source);
-    var swimmerHtml = swimmerTemplate({swimmers: swimmerData.swimmers});
-    $("#swimmer-List").append(swimmerHtml);
-
-
+    // var source = $('#swimmer-List-Template').html();
+    // var swimmerTemplate = Handlebars.compile(source);
+    // var swimmerHtml = swimmerTemplate({swimmers: swimmerData.swimmers});
+    // $("#swimmer-List").append(swimmerHtml);
 
     $(".selectSwimmer").on("click", function () {
       var clickedBox = $(this);
@@ -52,7 +66,7 @@ $(document).on("ready", function() {
       createSwimmer();
       function createSwimmer() {
         if (swimmerSelector === 1) {
-          var swimmer1 = new Swimmer();
+          swimmer1 = new Swimmer();
           swimmer1.id = $("#swimmerOne");
           swimmer1.id.css("visibility", "visible");
           swimmer1.firstName = swimmerData.swimmers[swimmerID].swimmer_firstName;
@@ -61,9 +75,11 @@ $(document).on("ready", function() {
           swimmer1.id.text(swimmer1.lastName);
           console.log(swimmer1);
           clickedBox.off("click");
+          $("#player1Name").text(swimmer1.firstName + " " + swimmer1.lastName);
           swimmerSelector = 2;
+          $("#gameMessage").text(player2SelectMessage);
         } else {
-          var swimmer2 = new Swimmer();
+          swimmer2 = new Swimmer();
           swimmer2.id = $("#swimmerTwo");
           swimmer2.id.css("visibility", "visible");
           swimmer2.firstName = swimmerData.swimmers[swimmerID].swimmer_firstName;
@@ -72,30 +88,57 @@ $(document).on("ready", function() {
           swimmer2.id.text(swimmer2.lastName);
           console.log(swimmer2);
           clickedBox.off("click");
-          swimmerSelector = 2;
+          $("#player2Name").text(swimmer2.firstName + " " + swimmer2.lastName);
           $(".selectSwimmer").off("click");
-          setGame();
+          $("#startGame").on('click', function() {
+              $("body").on('keydown', function (e) {
+                  if (e.keyCode === 91) {
+                    swimmer1.position += 20;
+                    var swimmer1Position = swimmer1.position + "px";
+                    console.log(swimmer1Position);
+                    swimmer1.id.css("margin-left", swimmer1Position);
+                  }
+                  if (e.keyCode === 93) {
+                    swimmer2.position += 20;
+                    var swimmer2Position = swimmer2.position + "px";
+                    console.log(swimmer2Position);
+                    swimmer2.id.css("margin-left", swimmer2Position);
+                  }
+                  if (swimmer1.position === 770) {
+                      $("body").off('keydown');
+                      $("#gameMessage").text(swimmer1.firstName + " " + swimmer1.lastName + " Wins!");
+                      player1Score += 1;
+                      $("#player1Score").text(player1Score);
+                  }
+                  if (swimmer2.position === 770) {
+                      $("body").off('keydown');
+                      $("#gameMessage").text(swimmer2.firstName + " " + swimmer2.lastName + " Wins!");
+                      player2Score += 1;
+                      $("#player2Score").text(player2Score);
+                  }
+              });
+          });
         }
       }
 
     });
 
-
-    function setGame() {
-      $("#startGame").on('click', function() {
-        $("body").on('keydown', function (e) {
-            if (e.keyCode === 13) {
-              swimmer1.position += 10;
-              var swimmer1Position = swimmer1.position + "px";
-              swimmer1.id.css("margin-left", swimmer1Position);
-            } else if (e.keyCode === 16) {
-              swimmer2.position += 10;
-              var swimmer2Position = swimmer2.position + "px";
-              swimmer2.id.css("margin-left", swimmer2Position);
-            }
-          });
-      })
-    }
+    //
+    // function setGame() {
+    //   $("#startGame").on('click', function() {
+    //     $("body").on('keydown', function (e) {
+    //         if (e.keyCode === 13) {
+    //           swimmer1.position += 10;
+    //           var swimmer1Position = swimmer1.position + "px";
+    //           swimmer1.id.css("margin-left", swimmer1Position);
+    //         } else if (e.keyCode === 16) {
+    //           swimmer2.position += 10;
+    //           var swimmer2Position = swimmer2.position + "px";
+    //           swimmer2.id.css("margin-left", swimmer2Position);
+    //         }
+    //       });
+    //   })
+    // }
   };
 
   function Swimmer() {
