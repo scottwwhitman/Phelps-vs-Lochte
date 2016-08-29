@@ -2,9 +2,9 @@
 
 **Objective:** Build a racing game for Project O.
 
-**Description** Two players can select from 6 different swimmer profiles to race across the board.  The game includes a countdown to the race, displays the winner, and keeps track of the score.  Players can race again with the same swimmers, or reset to choose new swimmers and reset the score board.
+**Description:** Two players can select from 6 different swimmer profiles to race across the board.  The game includes a countdown to the race, displays the winner, and keeps track of the score.  Players can race again with the same swimmers, or reset to choose new swimmers and reset the score board.
 
-**Link to the App**  <a href="https://scottwwhitman.github.io/Phelps-vs-Lochte.github.io/">Phelps-vs-Lochte</a>
+**Link to the App:**  <a href="https://scottwwhitman.github.io/Phelps-vs-Lochte.github.io/">Phelps-vs-Lochte</a>
 
 
 ## Technologies used

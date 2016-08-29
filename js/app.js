@@ -148,7 +148,7 @@ $(document).on("ready", function() {
               $("#player1Score").text(player1Score);
           }
           if (swimmer2.position === 790) {
-            $("body").off('keydown');
+              $("body").off('keydown');
               $("#gameMessage").text(swimmer2.firstName + " " + swimmer2.lastName + " Wins!");
               player2Score += 1;
               $("#player2Score").text(player2Score);
