@@ -34,9 +34,9 @@
 
 
 ## Problems I have encountered
-* 1) The publicly-deployed version of my app through github is not working.  Seems to be having a problem with the handlebars code I built. Works just fine locally.   
+* 1) There is one bug in the game I found.  When the player hits Race Again or Reset Game, everything works fine, except with the players race, the program is hearing an additional keypress for each new game played.  As a result, it looks like each race that is played "speeds up".  The problem is cleared with a refresh.  Still working to solve this problem.
 
-* 2) There is one bug in the game.  When the player hits Race Again or Reset Game, everything works fine, except with the players race, the program is hearing an additional keypress for each new game played.  As a result, it looks like each race that is played "speeds up".  The problem is cleared with a refresh.  Still working to solve this problem.
+* 2) Need to add responsiveness so game formats correctly on different screens.
 
 
 ## Screenshots
