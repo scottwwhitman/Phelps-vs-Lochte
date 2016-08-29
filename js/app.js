@@ -13,6 +13,7 @@ $(document).on("ready", function() {
   var swimmer1 = null
   var swimmer2 = null
   var swimmerSelector = 1
+  var delay = 2000
 
   // runs Handlebars to create swimmer list
   var source = $('#swimmer-List-Template').html();
@@ -45,6 +46,9 @@ $(document).on("ready", function() {
     swimmer1.id.css("margin-left", "50px");
     swimmer2.id.css("margin-left", "50px");
     $("body").off('keydown');
+    $("#gameOnYourMarksBox").css("visibility", "hidden");
+    $("#goBox").css("visibility", "hidden");
+    $("#gameMessage").text("Press 'Start Race' to begin race countdown!");
     race();
   });
 
@@ -60,6 +64,8 @@ $(document).on("ready", function() {
     $("#swimmerTwo").css("visibility", "hidden");
     $("#swimmerTwo").css("margin-left", 50);
     $("body").off('keydown');
+    $("#gameOnYourMarksBox").css("visibility", "hidden");
+    $("#goBox").css("visibility", "hidden");
     game = new Game();
   });
 
@@ -93,7 +99,7 @@ $(document).on("ready", function() {
         clickedBox.off("click");
         $("#player2Name").text(swimmer2.firstName + " " + swimmer2.lastName);
         $(".selectSwimmer").off("click");
-        $("#gameMessage").text("Press Start Game to race!");
+        $("#gameMessage").text("Press 'Start Race' to begin race countdown!");
         race();
       }
     });
@@ -108,41 +114,37 @@ $(document).on("ready", function() {
       this.position = 50;
   }
 
-
-  // setTimeout(function() {
-  //   //your code to be executed after 1 second
-  // }, delay);
-
-
   // creates each race provides the movement and checks for a winner
   function race() {
     $("#startGame").on('click', function() {
-      $("body").on('keydown', function (event) {
-        if (event.keyCode === 91) {
-          swimmer1.position += 20;
-          var swimmer1Position = swimmer1.position + "px";
-          console.log(swimmer1Position);
-          swimmer1.id.css("margin-left", swimmer1Position);
-        }
-        if (event.keyCode === 93) {
-          swimmer2.position += 20;
-          var swimmer2Position = swimmer2.position + "px";
-          console.log(swimmer2Position);
-          swimmer2.id.css("margin-left", swimmer2Position);
-        }
-        if (swimmer1.position === 770) {
+      $("#gameOnYourMarksBox").css("visibility", "visible");
+      setTimeout(function() {
+        $("#goBox").css("visibility", "visible");
+        $("body").on('keydown', function (event) {
+          if (event.keyCode === 91) {
+            swimmer1.position += 20;
+            var swimmer1Position = swimmer1.position + "px";
+            swimmer1.id.css("margin-left", swimmer1Position);
+          }
+          if (event.keyCode === 93) {
+            swimmer2.position += 20;
+            var swimmer2Position = swimmer2.position + "px";
+            swimmer2.id.css("margin-left", swimmer2Position);
+          }
+          if (swimmer1.position === 790) {
+              $("body").off('keydown');
+              $("#gameMessage").text(swimmer1.firstName + " " + swimmer1.lastName + " Wins!");
+              player1Score += 1;
+              $("#player1Score").text(player1Score);
+          }
+          if (swimmer2.position === 790) {
             $("body").off('keydown');
-            $("#gameMessage").text(swimmer1.firstName + " " + swimmer1.lastName + " Wins!");
-            player1Score += 1;
-            $("#player1Score").text(player1Score);
-        }
-        if (swimmer2.position === 770) {
-          $("body").off('keydown');
-            $("#gameMessage").text(swimmer2.firstName + " " + swimmer2.lastName + " Wins!");
-            player2Score += 1;
-            $("#player2Score").text(player2Score);
-        }
-      });
+              $("#gameMessage").text(swimmer2.firstName + " " + swimmer2.lastName + " Wins!");
+              player2Score += 1;
+              $("#player2Score").text(player2Score);
+          }
+        });
+      }, delay);
     });
   }
 // end

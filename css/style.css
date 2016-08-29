@@ -94,23 +94,26 @@ body {
   border: 2px solid black;
   text-align: center;
   height: 35px;
+  background-color: green;
 }
 
 .swimmerControlKeyBox {
-  border: 2px solid black;
-  /*text-align: center;*/
-  margin-top: 4px;
-  margin-left: 15px;
-  width: 250px;
-  background-color: green;
+  margin-top: 6px;
+  margin-left: -4px;
+  width: 290px;
   color: white;
 }
 
-.button {
-  width: 100px;
+#reset {
+  width: 200px;
 }
 
-.startControls {
+#raceAgain {
+  width: 200px;
+}
+
+#startGame {
+  width: 200px;
 }
 
 #gameOnYourMarksBox {
@@ -122,6 +125,7 @@ body {
     padding-top: 5px;
     height: 30px;
     margin-left: 40px;
+    visibility: hidden;
 }
 
 #goBox {
@@ -135,6 +139,7 @@ body {
   margin-left: 40px;
   margin-top: -12px;
   color: white;
+  visibility: hidden;
 }
 
 #raceBoard {
