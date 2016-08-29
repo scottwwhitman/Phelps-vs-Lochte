@@ -11,6 +11,10 @@ body {
   background-color: blue;
 }
 
+#usa {
+  color: red;
+}
+
 #gameTitle {
   color: white;
   text-align: center;
@@ -34,11 +38,53 @@ body {
   font-size: 20px;
 }
 
+#swimmerFirstName {
+  font-size: 12px;
+  margin-left: -11px;
+}
+
+#phelps{
+  height: 100px;
+  margin-left: -3px;
+  margin-top: -11px;
+}
+
+#lochte{
+  height: 100px;
+  margin-left: -1px;
+  margin-top: -11px;
+}
+
+#ledecky{
+  height: 100px;
+  margin-left: -9px;
+  margin-top: -11px;
+}
+
+#manuel{
+  height: 100px;
+  margin-left: 0px;
+  margin-top: -11px;
+}
+
+#adrian{
+  height: 100px;
+  margin-left: -3px;
+  margin-top: -11px;
+}
+
+#dirado{
+  height: 100px;
+  margin-left: -3px;
+  margin-top: -11px;
+}
+
 .selectSwimmer {
   display: inline-block;
   border: 2px solid black;
   height: 120px;
   background-color: white;
+  object-fit: fill;
 }
 
 #boardControls {
@@ -99,7 +145,7 @@ body {
 
 .swimmerControlKeyBox {
   margin-top: 6px;
-  margin-left: -4px;
+  margin-left: 25px;
   width: 290px;
   color: white;
 }
@@ -124,7 +170,7 @@ body {
     border-radius: 5px;
     padding-top: 5px;
     height: 30px;
-    margin-left: 40px;
+    margin-left: 75px;
     visibility: hidden;
 }
 
@@ -136,7 +182,7 @@ body {
   border-radius: 5px;
   padding-top: 5px;
   height: 30px;
-  margin-left: 40px;
+  margin-left: 75px;
   margin-top: -12px;
   color: white;
   visibility: hidden;
@@ -155,8 +201,8 @@ body {
 #swimmerOne {
   height: 100px;
   width: 100px;
-  background-color: red;
-  border: 2px solid black;
+  /*background-color: red;
+  border: 2px solid black;*/
   visibility: hidden;
   position: absolute;
   margin-top: 35px;
@@ -166,10 +212,43 @@ body {
 #swimmerTwo {
   height: 100px;
   width: 100px;
-  background-color: blue;
-  border: 2px solid black;
+  /*background-color: blue;
+  border: 2px solid black;*/
   visibility: hidden;
   position: absolute;
   margin-top: 190px;
   margin-left: 50px;
+}
+
+#phelpsRace {
+  height: 120px;
+  margin-top: -10px;
+}
+
+#lochteRace {
+  height: 120px;
+  margin-top: -10px;
+}
+
+#ledeckyRace {
+  height: 115px;
+  margin-top: -10px;
+  margin-left: -5px;
+}
+
+#manuelRace {
+  height: 120px;
+  margin-top: -10px;
+  margin-left: 5px;
+}
+
+#adrianRace {
+  height: 120px;
+  margin-top: -10px;
+}
+
+#diradoRace {
+  height: 120px;
+  margin-top: -10px;
+  margin-left: 3px;
 }

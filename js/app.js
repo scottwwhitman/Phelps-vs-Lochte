@@ -52,6 +52,7 @@ $(document).on("ready", function() {
     race();
   });
 
+
   // resets the game and choose new swimmers
   $("#reset").on("click", function () {
     player1Score = 0
@@ -59,6 +60,8 @@ $(document).on("ready", function() {
     swimmer1 = null
     swimmer2 = null
     swimmerSelector = 1
+    $("#swimmerOne img:last-child").remove();
+    $("#swimmerTwo img:last-child").remove();
     $("#swimmerOne").css("visibility", "hidden");
     $("#swimmerOne").css("margin-left", 50);
     $("#swimmerTwo").css("visibility", "hidden");
@@ -81,7 +84,9 @@ $(document).on("ready", function() {
         swimmer1.firstName = swimmerData.swimmers[swimmerID].swimmer_firstName;
         swimmer1.lastName = swimmerData.swimmers[swimmerID].swimmer_lastName;
         swimmer1.image = swimmerData.swimmers[swimmerID].swimmer_image;
-        swimmer1.id.text(swimmer1.lastName);
+        swimmer1.imageID = swimmerData.swimmers[swimmerID].swimmer_imageID;
+        swimmer1.imageIDRace = swimmerData.swimmers[swimmerID].swimmer_imageIDRace;
+        $('#swimmerOne').prepend('<img id="'+swimmer1.imageIDRace+'" src=" '+ swimmer1.image +' ">');
         console.log(swimmer1);
         clickedBox.off("click");
         $("#player1Name").text(swimmer1.firstName + " " + swimmer1.lastName);
@@ -94,7 +99,9 @@ $(document).on("ready", function() {
         swimmer2.firstName = swimmerData.swimmers[swimmerID].swimmer_firstName;
         swimmer2.lastName = swimmerData.swimmers[swimmerID].swimmer_lastName;
         swimmer2.image = swimmerData.swimmers[swimmerID].swimmer_image;
-        swimmer2.id.text(swimmer2.lastName);
+        swimmer2.imageID = swimmerData.swimmers[swimmerID].swimmer_imageID;
+        swimmer2.imageIDRace = swimmerData.swimmers[swimmerID].swimmer_imageIDRace;
+        $('#swimmerTwo').prepend('<img id= "'+swimmer2.imageIDRace+'" src=" '+ swimmer2.image +' ">');
         console.log(swimmer2);
         clickedBox.off("click");
         $("#player2Name").text(swimmer2.firstName + " " + swimmer2.lastName);
@@ -112,6 +119,8 @@ $(document).on("ready", function() {
       this.lastName = null;
       this.image = null;
       this.position = 50;
+      this.imageID = null;
+      this.imageIDRace = null;
   }
 
   // creates each race provides the movement and checks for a winner
@@ -120,6 +129,7 @@ $(document).on("ready", function() {
       $("#gameOnYourMarksBox").css("visibility", "visible");
       setTimeout(function() {
         $("#goBox").css("visibility", "visible");
+        $("#gameMessage").text("GO!");
         $("body").on('keydown', function (event) {
           if (event.keyCode === 91) {
             swimmer1.position += 20;

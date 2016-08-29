@@ -29,7 +29,7 @@
       <!-- Contains the game title -->
       <div class="row">
         <div class="col-md-12" id="gameTitleDiv">
-          <p id="gameTitle">PHELPS vs. LOCHTE USA SWIM CHALLENGE</p>
+          <p id="gameTitle">PHELPS vs. LOCHTE <span id="usa">USA</span> SWIM CHALLENGE</p>
         </div>
       </div>
 
@@ -46,8 +46,10 @@
           <div class="row" id="swimmer-List">
             <script id="swimmer-List-Template" type="text/x-handlebars-template">
               {{#each swimmers}}
-                <div class="col-md-2 selectSwimmer" id="{{swimmer_id}}">
-                  <p>{{swimmer_lastName}}</p>
+                <div class="col-md-2 selectSwimmer fill" id="{{swimmer_id}}">
+                  <p id="swimmerFirstName">{{swimmer_firstName}} {{swimmer_lastName}}</p>
+                  <!-- <p id="swimmerLastName">{{swimmer_lastName}}</p> -->
+                  <img id="{{swimmer_imageID}}" src={{swimmer_image}}>
                 </div>
               {{/each}}
             </script>
@@ -107,7 +109,6 @@
           </div>
         </div>
       </div>
-
 
       <!-- Contains the race board -->
       <div class="row">
