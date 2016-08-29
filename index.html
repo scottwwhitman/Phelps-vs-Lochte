@@ -28,18 +28,18 @@
 
       <!-- Contains the game title -->
       <div class="row">
-        <div class="col-md-12" id="gameTitle">
-          <p>Phelps vs. Lochte Game</p>
+        <div class="col-md-12" id="gameTitleDiv">
+          <p id="gameTitle">PHELPS vs. LOCHTE SWIM CHALLENGE</p>
         </div>
       </div>
 
       <!-- Contains the game controls -->
       <div class="row" id="gameControls">
         <div class="col-md-8" id="selectSwimmerControls">
-          <!-- Title line for select swimmer -->
+          <!-- Contains the game message board -->
           <div class="row">
-            <div class="col-md-12" id="selectSwimmerTitle">
-              <p>Select your swimmer</p>
+            <div class="col-md-12" id="gameMessageBox">
+              <p id="gameMessage"></p>
             </div>
           </div>
           <!-- Utilizes Handlebars to creates the swimmer list for selecting each player's swimmer -->
@@ -52,79 +52,68 @@
               {{/each}}
             </script>
           </div>
+          <!-- Contains the swimmer names and scores -->
+          <div class="row">
+            <div class="col-md-12" id="swimmerScoreBoard">
+                <!-- Player names and score -->
+                <div class="row">
+                  <div class="col-md-5 swimmerNames">
+                    <p id="player1Name"></p>
+                  </div>
+                  <div class="col-md-1 swimmerScores">
+                    <p id="player1Score"></p>
+                  </div>
+                  <div class="col-md-5 swimmerNames">
+                    <p id="player2Name"></p>
+                  </div>
+                  <div class="col-md-1 swimmerScores">
+                    <p id="player2Score"></p>
+                  </div>
+                </div>
+                <!-- Player control keys -->
+                <div class="row">
+                  <div class="col-md-6 swimmerControlKey">
+                    <p class="swimmerControlKeyBox">Hit LEFT COMMAND key</p>
+                  </div>
+                  <div class="col-md-6 swimmerControlKey">
+                    <p class="swimmerControlKeyBox">Hit RIGHT COMMAND key</p>
+                  </div>
+                </div>
+            </div>
+          </div>
         </div>
-        <!-- Reset and race again controls -->
+        <!-- Reset, race again and start game controls -->
         <div class="col-md-4" id="boardControls">
           <div class="row">
-            <div class="col-md-6">
-              <button type="button" class="btn btn-primary center-block" id="raceAgain">Race again</button>
+            <div class="col-md-12 controlDesign">
+              <button type="button" class="btn btn-primary center-block" id="reset">Reset Game</button>
             </div>
-            <div class="col-md-6">
-              <button type="button" class="btn btn-primary center-block" id="reset">Reset</button>
+          </div>
+          <div class="row">
+            <div class="col-md-12 controlDesign">
+              <button type="button" class="btn btn-primary center-block" id="raceAgain">Race Again</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 startControls controlDesign" id="gameStart">
+              <button type="button" class="btn btn-primary center-block" id="startGame">Start Game</button>
+            </div>
+            <div class="col-md-12 startControls controlDesign" id="gameOnYourMarks">
+              <p id="gameOnYourMarksBox">On Your Marks...</p>
+            </div>
+            <div class="col-md-12 startControls controlDesign" id="go">
+              <p id="goBox">GO!</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Contains the game message board -->
-      <div class="row">
-        <div class="col-md-12" id="gameMessageBox">
-          <p id="gameMessage"></p>
-        </div>
-      </div>
-
-      <!-- Contains the game score board -->
-        <div class="row">
-          <div class="col-md-4" id="gameStartControls">
-            <div class="row">
-              <div class="col-md-12 startControls" id="gameStart">
-                <button type="button" class="btn btn-primary center-block" id="startGame">Start game</button>
-              </div>
-              <div class="col-md-12 startControls" id="gameOnYourMarks">
-                <p>On your marks...</p>
-              </div>
-              <div class="col-md-12 startControls" id="go">
-                <p>Go!</p>
-              </div>
-              <div class="col-md-12 startControls" id="timer">
-                <p>Timer</p>
-              </div>
-            </div>
-          </div>
-          <!-- Contains the swimmer names and scores -->
-          <div class="col-md-8" id="swimmerScoreBoard">
-              <!-- Player names and score -->
-              <div class="row">
-                <div class="col-md-5 swimmerNames">
-                  <p id="player1Name"></p>
-                </div>
-                <div class="col-md-1 swimmerScores">
-                  <p id="player1Score"></p>
-                </div>
-                <div class="col-md-5 swimmerNames">
-                  <p id="player2Name"></p>
-                </div>
-                <div class="col-md-1 swimmerScores">
-                  <p id="player2Score"></p>
-                </div>
-              </div>
-              <!-- Player control keys -->
-              <div class="row">
-                <div class="col-md-6 swimmerControlKey">
-                  <p>Hit SHIFT key</p>
-                </div>
-                <div class="col-md-6 swimmerControlKey">
-                  <p>Hit RETURN key</p>
-                </div>
-              </div>
-          </div>
-        </div>
 
       <!-- Contains the race board -->
       <div class="row">
         <div class="col-md-12" id="raceBoard">
           <div id="swimmerOne"></div>
-          <div id="swimmerTwo">Swimmer2</div>
+          <div id="swimmerTwo"></div>
           <img src="assets/pool.jpg" id="poolImage">
         </div>
       </div>

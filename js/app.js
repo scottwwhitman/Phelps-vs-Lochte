@@ -93,6 +93,7 @@ $(document).on("ready", function() {
         clickedBox.off("click");
         $("#player2Name").text(swimmer2.firstName + " " + swimmer2.lastName);
         $(".selectSwimmer").off("click");
+        $("#gameMessage").text("Press Start Game to race!");
         race();
       }
     });
@@ -106,6 +107,12 @@ $(document).on("ready", function() {
       this.image = null;
       this.position = 50;
   }
+
+
+  // setTimeout(function() {
+  //   //your code to be executed after 1 second
+  // }, delay);
+
 
   // creates each race provides the movement and checks for a winner
   function race() {
@@ -130,7 +137,7 @@ $(document).on("ready", function() {
             $("#player1Score").text(player1Score);
         }
         if (swimmer2.position === 770) {
-            $("body").off('keydown');
+          $("body").off('keydown');
             $("#gameMessage").text(swimmer2.firstName + " " + swimmer2.lastName + " Wins!");
             player2Score += 1;
             $("#player2Score").text(player2Score);
